@@ -1,4 +1,5 @@
-formaTriangulo :: Int -> Int -> Int -> Bool
-formaTriangulo a b c = 
-    (a + b > c) && (a + c > b) && (b + c > a) 
-    
+triangulo :: Int -> Int -> Int -> Bool
+triangulo a b c =
+    a + b > c &&
+    a + c > b &&
+    b + c > a
