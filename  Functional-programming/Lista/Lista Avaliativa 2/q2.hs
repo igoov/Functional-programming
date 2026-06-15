@@ -1,10 +1,36 @@
-fibonacci :: Int -> Int
-fibonacci 0 = 0
-fibonacci 1 = 1
-fibonacci n = fibonacci (n - 1) + fibonacci (n - 2)
+estoque :: (Int,Int,Float) -> (Int,Float,String)
+
+estoque (codigo,qtd,valor) =
+
+    (codigo,total,situacao)
+
+    where
+
+    total = fromIntegral qtd * valor
+
+
+    situacao
+
+        | qtd < 10 = "Estoque Baixo"
+
+        | qtd <= 50 = "Estoque Medio"
+
+        | otherwise = "Estoque Alto"
+
+
 
 main :: IO ()
+
 main = do
-    x <- getLine
-    let n = read x :: Int
-    print (fibonacci n)
+
+    putStrLn "Codigo:"
+    codigo <- readLn
+
+    putStrLn "Quantidade:"
+    qtd <- readLn
+
+    putStrLn "Valor:"
+    valor <- readLn
+
+
+    print (estoque(codigo,qtd,valor))
