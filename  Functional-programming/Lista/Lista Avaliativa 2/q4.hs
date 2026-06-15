@@ -1,9 +1,28 @@
-fatorial :: Int -> Int
-fatorial 0 = 1
-fatorial n = n * fatorial (n - 1)
+multiplos :: [Int] -> Int -> [Int]
+
+multiplos [] n = []
+
+
+multiplos (x:xs) n
+
+    | x > n && x `mod` 3 == 0 =
+        x : multiplos xs n
+
+    | otherwise =
+        multiplos xs n
+
+
 
 main :: IO ()
+
 main = do
-    x <- getLine
-    let n = read x :: Int
-    print (fatorial n)
+
+    putStrLn "Digite uma lista:"
+    lista <- readLn
+
+
+    putStrLn "Digite o numero:"
+    n <- readLn
+
+
+    print (multiplos lista n)
