@@ -1,21 +1,42 @@
-somaPares :: Int -> Int -> Int
-somaPares a b
-    | a > b = 0
-    | even a = a + somaPares (a + 1) b
-    | otherwise = somaPares (a + 1) b
+existe :: Int -> [Int] -> Bool
 
-produtoImpares :: Int -> Int -> Int
-produtoImpares a b
-    | a > b = 1
-    | odd a = a * produtoImpares (a + 1) b
-    | otherwise = produtoImpares (a + 1) b
+existe x [] = False
+
+
+existe x (y:ys)
+
+    | x == y = True
+
+    | otherwise = existe x ys
+
+
+
+uniao :: [Int] -> [Int] -> [Int]
+
+
+uniao [] lista2 = lista2
+
+
+uniao (x:xs) lista2
+
+    | existe x lista2 =
+        uniao xs lista2
+
+    | otherwise =
+        x : uniao xs lista2
+
+
 
 main :: IO ()
-main = do
-    a <- getLine
-    b <- getLine
-    let x = read a :: Int
-    let y = read b :: Int
 
-    print (somaPares x y)
-    print (produtoImpares x y)
+main = do
+
+    putStrLn "Primeira lista:"
+    l1 <- readLn
+
+
+    putStrLn "Segunda lista:"
+    l2 <- readLn
+
+
+    print (uniao l1 l2)
